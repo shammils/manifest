@@ -86,7 +86,6 @@ function setHeader() {
 }
 
 function getSku(obj) {
-  // F&FPH&S19MVDVD
   let sku = ''
   obj.Title.split(' ').forEach(w => {
     if (w.length) sku += w[0]
