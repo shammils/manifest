@@ -1,4 +1,5 @@
 add support for "research" material manifest generation
+please for the love of god write testing. why wont you do this.
 
 I dont want to check in the testing html files from internet sources, so here
 $ wget https://www.imdb.com/title/tt6806448/

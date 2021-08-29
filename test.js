@@ -26,7 +26,7 @@ function log(log) {
   }
 }
 
-doWCCsvThing()
+//doWCCsvThing()
 async function doWCCsvThing() {
   const thing = fs.readFileSync('/home/watashino/Downloads/wc.csv', {encoding:'utf8'})
   csv.parse(thing, {
@@ -49,7 +49,7 @@ async function hackImage() {
   console.log(urlObj)
 }
 
-//imdbSeries()
+imdbSeries()
 async function imdbSeries() {
   const html = Buffer.from(
     fs.readFileSync('./temp/mip.html')
