@@ -1,0 +1,22 @@
+{
+  "name": "manifest",
+  "version": "0.0.0",
+  "description": "Generate manifests from files on disks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Skyler Hamilton <ore@skylerhamilton.info>",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "cheerio": "^1.0.0-rc.10",
+    "csv": "^5.5.0",
+    "follow-redirects": "^1.14.1",
+    "image-size": "^1.0.0",
+    "klaw": "^3.0.0",
+    "pdfkit": "^0.12.1",
+    "through2": "^4.0.2",
+    "yargs": "^17.0.1"
+  }
+}
