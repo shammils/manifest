@@ -26,6 +26,16 @@ function log(log) {
   }
 }
 
+wiki227()
+async function wiki227() {
+  const html = Buffer.from(
+    fs.readFileSync('./temp/227_wiki.html')
+  ).toString('utf8')
+
+  const data = await metadata.fetchMetadata('wikipedia', html, 'http://skylerhamilton.info')
+  console.log(`data: ${JSON.stringify(data)}`)
+}
+
 //doWCCsvThing()
 async function doWCCsvThing() {
   const thing = fs.readFileSync('/home/watashino/Downloads/wc.csv', {encoding:'utf8'})
@@ -49,7 +59,7 @@ async function hackImage() {
   console.log(urlObj)
 }
 
-imdbSeries()
+//imdbSeries()
 async function imdbSeries() {
   const html = Buffer.from(
     fs.readFileSync('./temp/mip.html')
