@@ -28,6 +28,23 @@ function log(log) {
 
 wiki227()
 async function wiki227() {
+  /*
+  [
+    {
+      type: 'abbv',
+      children: [
+        {
+          type: "text",
+          data: "No"
+        }
+      ]
+    },
+    {
+      type: "text",
+      data: "of seasons"
+    }
+  ]
+  */
   const html = Buffer.from(
     fs.readFileSync('./temp/227_wiki.html')
   ).toString('utf8')
