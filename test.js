@@ -26,25 +26,8 @@ function log(log) {
   }
 }
 
-wiki227()
+//wiki227()
 async function wiki227() {
-  /*
-  [
-    {
-      type: 'abbv',
-      children: [
-        {
-          type: "text",
-          data: "No"
-        }
-      ]
-    },
-    {
-      type: "text",
-      data: "of seasons"
-    }
-  ]
-  */
   let html = Buffer.from(
     fs.readFileSync('./temp/227_wiki.html')
   ).toString('utf8')
@@ -84,16 +67,13 @@ async function hackImage() {
 
 //imdbSeries()
 async function imdbSeries() {
-  const html = Buffer.from(
-    fs.readFileSync('./temp/mip.html')
-  ).toString('utf8')
-
-  console.log(html.length)
+  //const html = Buffer.from(fs.readFileSync('./temp/mip.html')).toString('utf8')
+  const html = Buffer.from(fs.readFileSync('./temp/kit_carson_imdb.html')).toString('utf8')
   const data = await metadata.fetchMetadata('imdb', html, 'http://skylerhamilton.info')
-  console.log(`data: %${JSON.stringify(data)}`)
+  console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
 }
 
-//imdbMovie()
+imdbMovie()
 async function imdbMovie() {
   console.log(metadata.sources)
 
@@ -103,6 +83,7 @@ async function imdbMovie() {
 
   console.log(html.length)
   const data = await metadata.fetchMetadata('imdb', html, 'http://skylerhamilton.info')
+  console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
 }
 
 //altScanDir()
