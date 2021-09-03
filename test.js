@@ -45,12 +45,18 @@ async function wiki227() {
     }
   ]
   */
-  const html = Buffer.from(
+  let html = Buffer.from(
     fs.readFileSync('./temp/227_wiki.html')
   ).toString('utf8')
 
-  const data = await metadata.fetchMetadata('wikipedia', html, 'http://skylerhamilton.info')
-  console.log(`data: ${JSON.stringify(data)}`)
+  let data = await metadata.fetchMetadata('wikipedia', html, 'http://skylerhamilton.info')
+  console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
+
+  html = Buffer.from(
+    fs.readFileSync('./temp/kit_carson_wiki.html')
+  ).toString('utf8')
+  data = await metadata.fetchMetadata('wikipedia', html, 'http://skylerhamilton.info')
+  console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
 }
 
 //doWCCsvThing()
