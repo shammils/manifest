@@ -9,6 +9,7 @@ const cheerio = require('cheerio')
 const path = require('path')
 const url = require('url')
 const csv = require('csv')
+const chalk = require('chalk')
 
 metadata.on('log', log)
 manifest.on('log', log)
@@ -24,6 +25,31 @@ function log(log) {
     default:
       throw `unsupported log level ${log.level}`
   }
+}
+
+h5o()
+async function h5o() {
+  let html = Buffer.from(
+    fs.readFileSync('./temp/h5o.html')
+  ).toString('utf8')
+
+  let data = await metadata.fetchMetadata('wikipedia', html, 'http://skylerhamilton.info')
+  console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
+}
+//do_227()
+async function do_227() {
+  let html = Buffer.from(
+    fs.readFileSync('./temp/227_imdb.html')
+  ).toString('utf8')
+
+  let data = await metadata.fetchMetadata('imdb', html, 'http://skylerhamilton.info')
+  console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
+
+  html = Buffer.from(
+    fs.readFileSync('./temp/227_wiki.html')
+  ).toString('utf8')
+  data = await metadata.fetchMetadata('wikipedia', html, 'http://skylerhamilton.info')
+  console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
 }
 
 //doWCCsvThing()
@@ -49,15 +75,12 @@ async function hackImage() {
   console.log(urlObj)
 }
 
-imdbSeries()
+//imdbSeries()
 async function imdbSeries() {
-  const html = Buffer.from(
-    fs.readFileSync('./temp/mip.html')
-  ).toString('utf8')
-
-  console.log(html.length)
+  //const html = Buffer.from(fs.readFileSync('./temp/mip.html')).toString('utf8')
+  const html = Buffer.from(fs.readFileSync('./temp/kit_carson_imdb.html')).toString('utf8')
   const data = await metadata.fetchMetadata('imdb', html, 'http://skylerhamilton.info')
-  console.log(`data: %${JSON.stringify(data)}`)
+  console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
 }
 
 //imdbMovie()
@@ -70,6 +93,7 @@ async function imdbMovie() {
 
   console.log(html.length)
   const data = await metadata.fetchMetadata('imdb', html, 'http://skylerhamilton.info')
+  console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
 }
 
 //altScanDir()
