@@ -6,10 +6,15 @@ const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
 const chalk = require('chalk')
+const util = require('./lib/util.js')
+const fs = require('fs-extra')
+
+const logPath = `./logs/log_${new Date().toISOString()}.log`
 
 metadata.on('log', log)
 manifest.on('log', log)
 function log(log) {
+  util.writeToLog(logPath, log.level, log.message)
   switch (log.level) {
     case 'debug': {
       if (argv.debug)
@@ -33,9 +38,11 @@ function log(log) {
     }
   }
   switch(argv.method) {
-    case 'metadata':
+    case 'metadata': {
+      await fs.ensureFile(logPath)
+      console.log('logging to', logPath)
       await metadata.handler(JSON.parse(argv.data))
-      break
+    } break
     case 'manifest':
       await manifest.handler(JSON.parse(argv.data))
       break

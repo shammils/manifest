@@ -9,6 +9,7 @@ const cheerio = require('cheerio')
 const path = require('path')
 const url = require('url')
 const csv = require('csv')
+const chalk = require('chalk')
 
 metadata.on('log', log)
 manifest.on('log', log)
@@ -26,17 +27,26 @@ function log(log) {
   }
 }
 
-//wiki227()
-async function wiki227() {
+h5o()
+async function h5o() {
   let html = Buffer.from(
-    fs.readFileSync('./temp/227_wiki.html')
+    fs.readFileSync('./temp/h5o.html')
   ).toString('utf8')
 
   let data = await metadata.fetchMetadata('wikipedia', html, 'http://skylerhamilton.info')
   console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
+}
+//do_227()
+async function do_227() {
+  let html = Buffer.from(
+    fs.readFileSync('./temp/227_imdb.html')
+  ).toString('utf8')
+
+  let data = await metadata.fetchMetadata('imdb', html, 'http://skylerhamilton.info')
+  console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
 
   html = Buffer.from(
-    fs.readFileSync('./temp/kit_carson_wiki.html')
+    fs.readFileSync('./temp/227_wiki.html')
   ).toString('utf8')
   data = await metadata.fetchMetadata('wikipedia', html, 'http://skylerhamilton.info')
   console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
@@ -73,7 +83,7 @@ async function imdbSeries() {
   console.log(`data: ${JSON.stringify(data, ' ', 2)}`)
 }
 
-imdbMovie()
+//imdbMovie()
 async function imdbMovie() {
   console.log(metadata.sources)
 
