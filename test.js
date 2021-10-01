@@ -27,7 +27,7 @@ function log(log) {
   }
 }
 
-h5o()
+//h5o()
 async function h5o() {
   let html = Buffer.from(
     fs.readFileSync('./temp/h5o.html')
@@ -154,6 +154,7 @@ async function altScanDir() {
   ]
 
 }
+
 //mal()
 async function mal() {
   const pathToJson = './test_files/Koi to Yobu ni wa Kimochi Warui (Season 1)/info.json'
@@ -170,6 +171,16 @@ async function mal() {
   //console.log('data', data)
   await metadata.saveMetadata('myanimelist', data, pathToJson, existingData)
   console.log('complete')
+}
+
+processHtml()
+async function processHtml() {
+  const html = Buffer.from(
+    fs.readFileSync('./temp/big_order.html')
+  ).toString('utf8')
+  // 'http://skylerhamilton.info/images/Untid.png'
+  const data = await metadata.fetchMetadata('myanimelist', html, 'http://skylerhamilton.info')
+  console.log(data)
 }
 
 //doTrimming()
